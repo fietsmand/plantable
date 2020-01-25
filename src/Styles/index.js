@@ -3,17 +3,29 @@ import Color from 'color';
 export const theme = {
   palette: {
     primary: {
-      main: '#293932',
+      main: '#2D4700',
     },
     secondary: {
       main: '#638468',
     },
     tertriary: {
-      main: '#a6736b',
+      main: '#7A1F0C',
     },
     cardColor: {
       main: '#EFEEEE',
     },
+  },
+  shadow: (color, distance, inset) => `${inset ? 'inset' : ''} ${distance}px ${distance}px ${distance * 2}px ${theme.palette[color].dark}, 
+  ${inset ? 'inset' : ''} ${-distance}px ${-distance}px ${distance * 2}px ${theme.palette[color].light}`,
+  background: (color, shape) => {
+    switch (shape) {
+      case 'concave':
+        return `linear-gradient(145deg, ${theme.palette[color].lightShade}, ${theme.palette[color].darkShade})`;
+      case 'convex':
+        return `linear-gradient(225deg, ${theme.palette[color].lightShade}, ${theme.palette[color].darkShade})`;
+      default:
+        return theme.palette[color].main;
+    }
   },
   spacing: (v) => v * 10,
 };
