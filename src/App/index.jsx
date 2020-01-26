@@ -2,6 +2,7 @@ import React from 'react';
 import Chart from 'Components/Chart';
 import Card from 'Components/Card';
 import Button from 'Components/Button';
+import Navigation from 'Components/Navigation';
 import { Save } from '@material-ui/icons';
 import { useStyles } from './styles';
 
@@ -10,6 +11,7 @@ const App = () => {
 
   return (
     <div className={classes.root}>
+      {/* <Navigation /> */}
       <Card>
         <div className={classes.chartContainer}>
           <Chart />

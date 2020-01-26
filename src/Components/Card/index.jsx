@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { useStyles } from './styles';
 
-const Card = ({ children }) => {
+const Card = ({ children, className, ...props }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={clsx(classes.root, className)} {...props}>
       {
         children
       }
