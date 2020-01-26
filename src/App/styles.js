@@ -2,7 +2,7 @@ import { createUseStyles } from 'react-jss';
 
 export const useStyles = createUseStyles((theme) => ({
   root: {
-    background: theme.background('primary', 'concave'),
+    background: theme.background('cardColor', 'concave'),
     minHeight: '100vh',
     padding: theme.spacing(2),
     display: 'flex',
@@ -10,9 +10,13 @@ export const useStyles = createUseStyles((theme) => ({
     alignContent: 'center',
   },
   chartContainer: {
-    boxShadow: theme.shadow('primary', 5, true),
+    boxShadow: theme.shadow('cardColor', 5, true),
     padding: 5,
     borderRadius: 5,
-    margin: theme.spacing(2),
+    background: theme.background('cardColor', 'concave'),
+    [theme.breakpoints.up('md')]: {
+      margin: theme.spacing(2),
+    },
+    marginBottom: theme.spacing(2),
   },
 }));

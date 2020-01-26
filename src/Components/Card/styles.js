@@ -6,8 +6,8 @@ export const useStyles = createUseStyles((theme) => ({
     height: '100%',
     width: '-webkit-fill-available',
     borderRadius: 12,
-    border: `1px solid ${theme.palette.primary.lightBorder}`,
-    background: `linear-gradient(145deg, ${theme.palette.primary.lightShade}, ${theme.palette.primary.darkShade})`,
-    boxShadow: theme.shadow('primary', 4),
+    border: `1px solid ${theme.palette.cardColor.lightBorder}`,
+    background: theme.background('cardColor', 'concave'),
+    boxShadow: theme.shadow('cardColor', 4),
   },
 }));
