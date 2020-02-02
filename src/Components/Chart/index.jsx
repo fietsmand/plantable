@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
-import { database } from '../../config/firebase';
+import PropTypes from 'prop-types';
+import { database } from 'Config/firebase';
 
-const Chart = () => {
+const Chart = ({ id, name }) => {
   const [data, setData] = useState();
   const theme = useTheme();
   const [labels, setLabels] = useState();
@@ -18,7 +19,7 @@ const Chart = () => {
   };
 
   useEffect(() => {
-    database().ref('moisture_1').limitToLast(10).on('value', (res) => {
+    database().ref(id).limitToLast(10).on('value', (res) => {
       const d = [];
       const t = [];
       res.forEach((r) => {
@@ -40,21 +41,21 @@ const Chart = () => {
     labels,
     datasets: [
       {
-        label: 'Peter The Plant',
+        label: name,
         fill: false,
         lineTension: 0.5,
-        backgroundColor: theme.palette.tertriary.light,
-        borderColor: theme.palette.tertriary.main,
+        backgroundColor: theme.palette.secondary.light,
+        borderColor: theme.palette.secondary.main,
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
-        pointBorderColor: theme.palette.tertriary.main,
+        pointBorderColor: theme.palette.secondary.main,
         pointBackgroundColor: '#fff',
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: theme.palette.tertriary.main,
-        pointHoverBorderColor: theme.palette.tertriary.dark,
+        pointHoverBackgroundColor: theme.palette.secondary.main,
+        pointHoverBorderColor: theme.palette.secondary.dark,
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
@@ -75,14 +76,13 @@ const Chart = () => {
             {
               ticks: {
                 min: 0,
-                max: 1050,
-                stepSize: 50,
-                fontColor: theme.palette.cardColor.dark,
+                max: 100,
+                stepSize: 10,
+                fontColor: theme.palette.secondary.dark,
               },
               gridLines: {
                 color: theme.palette.cardColor.dark,
                 zeroLineColor: theme.palette.cardColor.dark,
-                // color: 'rgb(255, 255, 255, 1)',
               },
             },
           ],
@@ -92,13 +92,23 @@ const Chart = () => {
               zeroLineColor: theme.palette.cardColor.dark,
             },
             ticks: {
-              fontColor: theme.palette.cardColor.dark,
+              fontColor: theme.palette.secondary.dark,
+
             },
           }],
         },
       }}
     />
   );
+};
+
+Chart.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string,
+};
+
+Chart.defaultProps = {
+  name: 'Unnamed Plant',
 };
 
 export default Chart;

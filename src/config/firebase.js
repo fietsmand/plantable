@@ -3,7 +3,6 @@
 import firebase from 'firebase';
 import firebaseConfig from './firebaseConfig';
 // Add the Firebase products that you want to use
-console.log(firebaseConfig);
 
 firebase.initializeApp(firebaseConfig);
 

@@ -137,3 +137,19 @@ export function unregister() {
     });
   }
 }
+
+export const isPushNotificationSupported = () => 'serviceWorker' in navigator && 'PushManager' in window;
+
+export const registerServiceWorker = () => navigator.serviceWorker.register('/serviceWorker.js');
+
+export const askUserPermission = async () => Notification.requestPermission();
+
+export const createNotificationSubscription = async () => {
+  // wait for service worker installation to be ready
+  const serviceWorker = await navigator.serviceWorker.ready;
+  // subscribe and return the subscription
+  return serviceWorker.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: '8ef1e9ca-447d-4da7-b059-71fc11c677aa',
+  });
+};

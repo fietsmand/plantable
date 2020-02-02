@@ -3,12 +3,11 @@ import { createUseStyles } from 'react-jss';
 export const useStyles = createUseStyles((theme) => ({
   root: {
     background: theme.background('cardColor', 'concave'),
-    minHeight: 'calc(100vh - 40px)',
+    minHeight: '100vh',
     padding: theme.spacing(2),
     display: 'flex',
-    // justifyContent: 'center',
-    // alignContent: 'center',
-    flexDirection: 'column',
+    justifyContent: 'center',
+    alignContent: 'center',
   },
   chartContainer: {
     boxShadow: theme.shadow('cardColor', 5, true),

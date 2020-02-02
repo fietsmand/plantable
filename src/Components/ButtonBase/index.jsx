@@ -5,10 +5,10 @@ import { useStyles } from './styles';
 
 
 const ButtonBase = ({
-  children, onClick, classes: propsClasses, backgroundColor,
+  children, onClick, classes: propsClasses, backgroundColor, color,
 }) => {
   console.log('🚀: ButtonBase -> propsClasses', propsClasses);
-  const classes = useStyles({ color: 'tertriary', backgroundColor });
+  const classes = useStyles({ color, backgroundColor });
   return (
     <button className={clsx(classes.root, propsClasses.root)} onClick={onClick} type="button">
       {children}
